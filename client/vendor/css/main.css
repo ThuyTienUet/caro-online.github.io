@@ -1,0 +1,24 @@
+li {
+    list-style-type: none;
+    display: inline;
+    width: 20%;
+    cursor: pointer;
+    text-align: center
+}
+ul {
+    width: auto;
+    display: flex;
+}
+/* body {
+    background-color: aqua
+} */
+
+#map {
+    width:  100%;
+    height: 600px ;
+    border: 0
+}
+
+.items li.active {
+    background-color: black
+}
