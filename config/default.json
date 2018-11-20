@@ -1,0 +1,20 @@
+{
+    "db": {
+        "options": {
+            "host": "localhost",
+            "port": 3306,
+            "dialect": "mysql",
+            "timezone": "+07:00",
+            "define": {
+                "timestamps": false
+            }
+        },
+        "db_name": "caro_online",
+        "user": "root",
+        "password": "123456"
+    },
+    "app": {
+        "port": 6001,
+        "URL": "http://localhost:6001"
+    }
+}

@@ -1,0 +1,34 @@
+<div class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="wiModal.onCancelButtonClicked()" aria-hidden="true">
+                    &times;
+                </button>
+                <h3 class="modal-title">
+                    <span class="user-define-16x16"></span>&nbsp; Name Room</h3>
+            </div>
+            <div class="modal-body">
+                <div role="alert" ng-show="formError" class="alert alert-danger">
+                    {{ formError }}
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <p>Name your room:</p>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" ng-model="name">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="wiModal.onOkButtonClicked()">
+                    <span class="ok-16x16"></span>&nbsp;OK
+                </button>
+                <button type="button" ng-click="wiModal.onCancelButtonClicked()" class="btn btn-default">
+                    <span class="close-16x16"></span>&nbsp;Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

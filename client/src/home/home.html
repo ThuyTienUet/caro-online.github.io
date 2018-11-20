@@ -1,60 +1,31 @@
 <navigation></navigation>
-<br>
-<br>
-<br>
-<br>
 <div class="container">
-  <div class="items">
-    <ul>
-      <li class="item" ng-click="click('item1')">item1</li>
-      <li class="item" ng-click="click('item2')">item2</li>
-      <li class="item" ng-click="click('item3')">item3</li>
-      <li class="item" ng-click="click('item4')">item4</li>
-      <li class="item" ng-click="click('item5')">item5</li>
-    </ul>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div id="map">
+</div>
+<div class="row list-group col-xs-12 col-md-8">
+    <div class="header">
+        <h2>List room</h2>
+    </div>
+    <div style="padding: 0 43% 5px">
+        <button class="btn btn-primary btn-md animated zoomIn" ng-click="addRoom()">New Room</button>
+    </div>
+    <div class="list-group-item animated jackInTheBox" style="border-radius: 25px;" ng-repeat="room in rooms">
+        <h5 ng-click="joinRoom(room.name, room.id)" style="color: black; cursor: pointer; margin: 5px 0">
+            {{ room.name }}
+            <button type="button" class="close" ng-click="onCancelButtonClicked()" aria-hidden="true" ng-hide="">
+                &times;
+            </button>
+        </h5>
 
-  </div>
-  <!-- <script>
-    var citymap = {
-      dhqg: {
-        center: { lat: 21.0368153, lng: 105.7815198 },
-        population: 100
-      },
-      dhqg1: {
-        center: { lat: 21.0367963, lng: 105.7827748 },
-        population: 100
-      }
-    };
-    function initMap() {
-      // Create the map.
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: { lat: 21.0368153, lng: 105.7815198 }
-      });
-
-      // Construct the circle for each value in citymap.
-      // Note: We scale the area of the circle based on the population.
-      for (var city in citymap) {
-        // Add the circle for this city to the map.
-        var cityCircle = new google.maps.Circle({
-          // strokeColor: '#FF0000',
-          strokeOpacity: 1,
-          strokeWeight: 0.5,
-          fillColor: '#FF0000',
-          fillOpacity: 1,
-          border: 1,
-          map: map,
-          center: citymap[city].center,
-          radius: Math.sqrt(citymap[city].population) * 2
-        });
-      }
-    }
-  </script> -->
-  <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBRZx2DRBxo4ruDyfXtItVAvby8w4t86Go" async defer>
-  </script> -->
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="header">
+        <h2>Ranking</h2>
+    </div>
+    <ul class="row list-group">
+        <li class="list-group-item animated fadeInRight" style="border-radius: 25px;" ng-repeat="user in users">
+            <h5>{{ user.username }} <span class="badge" style="float: right">{{ user.point }} </span> </h5>
+        </li>
+</div>
+</div>
 </div>

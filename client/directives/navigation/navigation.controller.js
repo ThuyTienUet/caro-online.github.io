@@ -1,39 +1,24 @@
 
 angular
-.module('airQuality')
-.controller('navigationCtrl', navigationCtrl);
+    .module('caroOnline')
+    .controller('navigationCtrl', navigationCtrl);
 
-function navigationCtrl() {
+function navigationCtrl($scope, $window, auth) {
 
-// $scope.isLoggedIn = false;
-// $scope.name = "";
+    $scope.isLoggedIn = false;
+    $scope.name = "";
 
-// $scope.logout = function () {
-//     // $window.localStorage.removeItem('user-token');
-//     authentication.logout();
-//     $scope.isLoggedIn = false;
-//     window.location.href;
-// };
+    $scope.logout = function () {
+        $window.sessionStorage.removeItem('user-token');
+        auth.logout();
+        $scope.isLoggedIn = false;
+        window.location.href;
+    };
 
-// $scope.isLoggedIn = authentication.isLoggedIn();
+    $scope.isLoggedIn = auth.isLoggedIn();
 
-// if ($scope.isLoggedIn == true) {
-//     let user = JSON.parse($window.localStorage['user']);
-//     $scope.name = user.username;
-// }
-
-// $scope.doLogin = function () {
-//     console.log('login');
-//     dialogLogin.login(function (result) {
-//         if (result == 1) {
-//             $scope.isLoggedIn = true;
-//             let user = JSON.parse($window.localStorage['user']);
-//             $scope.name = user.username;
-//         }
-//     });
-// }
-
-// $scope.home = function () {
-//     window.location.href;
-// }
+    if ($scope.isLoggedIn == true) {
+        let user = JSON.parse(auth.getUser());
+        $scope.name = user.username;
+    }
 }

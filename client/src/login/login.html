@@ -1,0 +1,36 @@
+<navigation></navigation>
+<div class="content">
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4 col-sm-12">
+            <div class="panel panel-default" style="margin-top: 20%">
+                <div class="panel-heading" style="background-color: transparent">
+                    <h4>Welcome</h4>
+                </div>
+                <div class="panel-body">
+                    <form accept-charset='UTF-8' method='POST' role='form' ng-submit="onSubmit()">
+                        <div role="alert" ng-show="formError" class="alert alert-danger">{{ formError }}</div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                                ng-model="user.username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                                value="" ng-model="user.password">
+                        </div>
+                        <div class='checkbox' ng-click="rememberMe()">
+                            <input type='checkbox' value='Remember Me'>&nbsp;Remember me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="" class="btn btn-success btn-lg btn-lock" value="Login">
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <p>Don't have an account? <a href="/#!/register">Register</a> now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
