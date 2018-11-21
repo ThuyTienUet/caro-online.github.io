@@ -9,14 +9,19 @@ function roomCtrl($scope, $window, $timeout, $http, $rootScope, $route, $locatio
     }
     let room = JSON.parse($window.sessionStorage['room']);
     let user = JSON.parse(auth.getUser());
-
     $scope.listUser = [];
     $scope.content = "";
     $scope.listMess = [];
     $scope.isBossRoom = false;
     $scope.win = false;
 
-    socket.emit('joined', { room: room, user: user });
+    socket.on('reloadRoom', function () {
+        $scope.reload = true;
+    })
+
+    if (!$scope.reload) {
+        socket.emit('joined', { room: room, user: user });
+    }
 
     socket.on('joinedRoom', function (data) {
         $timeout(function () {
@@ -69,13 +74,26 @@ function roomCtrl($scope, $window, $timeout, $http, $rootScope, $route, $locatio
         }
     });
 
+    // window.onbeforeunload = function () {
+    //     $location.path('/home')
+        
+    //    return 'abc'
+    // };
+    
+    $scope.cancelMember = function (member) {
+        socket.emit('quitRoom', { room: room, user: {username: member}, event: 'cancel' });
+    }
+
     $scope.quit = function () {
-        socket.emit('quitRoom', { room: room, user: user });
+        socket.emit('quitRoom', { room: room, user: user, event: 'quit' });
         $location.path('/home')
     }
 
     socket.on('quitedRoom', function (data) {
         $timeout(function () {
+            if (user.username == data.member && data.event == 'cancel') {
+                $location.path('/home')
+            }
             $scope.listUser = data.listUser;
             $scope.player1 = data.player1;
             $scope.player2 = data.player2;
@@ -84,6 +102,10 @@ function roomCtrl($scope, $window, $timeout, $http, $rootScope, $route, $locatio
     })
 
     socket.on('deleteRoom', function () {
+        $location.path('/home')
+    })
+
+    socket.on('cancelledRoom', function () {
         $location.path('/home')
     })
 

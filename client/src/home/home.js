@@ -9,10 +9,12 @@ function homeCtrl($scope, $http, auth, $location, $window, $timeout, dialog) {
     let tmp = {};
     $scope.rooms = [];
     $scope.users = [];
+    $scope.isAdmin = false;
     let user = JSON.parse(auth.getUser());
+    
+    if (user.role == 1) $scope.isAdmin = true;
 
     socket.on('deleteRoom', function (data) {
-        console.log('abc');
         $http.post('/api/room/delete', data)
             .then(function successCallback(dt) {
                 $scope.rooms.forEach(function (room, i) {
@@ -39,6 +41,21 @@ function homeCtrl($scope, $http, auth, $location, $window, $timeout, dialog) {
             console.log(err);
         })
 
+    $scope.cancelRoom = function (room) {
+        socket.emit('cancelRoom', room)
+        
+        $http.post('/api/room/delete', room)
+            .then(function successCallback(dt) {
+                $scope.rooms.forEach(function (room_, i) {
+                    if (room_.id == room.id) {
+                        $scope.rooms.splice(i, 1);
+                    }
+                })
+                $location.path('/home')
+            }, function errorCallback(err) {
+                console.log(err);
+            })
+    }
     $scope.addRoom = function () {
         dialog.nameRoom(function (result) {
             if (result) {

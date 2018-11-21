@@ -75,7 +75,10 @@ module.exports.updatePoint = (req, res) => {
 
 module.exports.getListUser = (req, res) => {
     User.findAll({
-    }).then(list => {
+        order: [
+            ['point', 'DESC']
+        ]
+    }).then(list => { 
         if(list) {
             res.send({ code: 200, content: "SUCCESSFULLY", listUser: list })
         } else {

@@ -4,6 +4,7 @@
         "start": "node server/app.js"
     },
     "dependencies": {
+        "angularjs-social-login": "^2.6.1",
         "config": "^2.0.1",
         "express": "^4.16.3",
         "jsonwebtoken": "^8.3.0",

@@ -23,7 +23,7 @@ function dialogUtils(ModalService) {
                                 callback(data.data.room);
                                 close($scope.name);
                             } else {
-                                $scope.formError = "Name Room exist";
+                                $scope.formError = "Name room exist";
                             }
                         }, function errorCallback(err) {
                             console.log(err);

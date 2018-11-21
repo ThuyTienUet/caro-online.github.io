@@ -37,4 +37,5 @@ function loginCtrl($location, auth, $http, $scope, $window) {
 			$window.localStorage['user'] = JSON.stringify($scope.user);
 		}
 	}
+
 }

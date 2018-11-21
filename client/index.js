@@ -24,3 +24,4 @@ angular
             })
             .otherwise({ redirectTo: '/' });
     }])
+
