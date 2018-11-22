@@ -7,6 +7,7 @@ function navigationCtrl($scope, $window, auth) {
 
     $scope.isLoggedIn = false;
     $scope.name = "";
+    $scope.isAdmin = false;
 
     $scope.logout = function () {
         $window.sessionStorage.removeItem('user-token');
@@ -19,6 +20,7 @@ function navigationCtrl($scope, $window, auth) {
 
     if ($scope.isLoggedIn == true) {
         let user = JSON.parse(auth.getUser());
+        if (user.role == 1) $scope.isAdmin = true;
         $scope.name = user.username;
     }
 }

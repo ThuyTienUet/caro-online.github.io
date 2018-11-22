@@ -11,6 +11,7 @@ let PLAYER2 = [{
 let LIST_USER_OF_ROOM = [];
 let LIST_MESSAGE = [];
 let RELOAD_ROOM = false;
+let CLOCK = [];
 
 SOCKET_IO.connect = function (io) {
     SOCKET_IO.io = io;
@@ -96,6 +97,8 @@ SOCKET_IO.connect = function (io) {
             }
         });
 
+        socket.emit('time', '');
+        
         socket.on('startPlay', function (data) {
             if (data.user.username != PLAYER1[data.room.id].username) {
                 if ((PLAYER2[data.room.id].username == '') || (PLAYER2[data.room.id].username == data.user.username)) {
@@ -107,7 +110,8 @@ SOCKET_IO.connect = function (io) {
                     WIN[data.room.id] = '';
                     PLAYER2[data.room.id].isClicked = true;
                     PLAYER1[data.room.id].isClicked = false;
-                    io.in(data.room.name).emit('initBoard', { board: BOARD[data.room.id], player2: PLAYER2[data.room.id] });
+                    CLOCK[data.room.id] = 30;
+                    io.in(data.room.name).emit('initBoard', { board: BOARD[data.room.id], player2: PLAYER2[data.room.id], clock: CLOCK[data.room.id] });
                 }
             } else {
                 if (PLAYER2[data.room.id].username != '') {
@@ -118,7 +122,8 @@ SOCKET_IO.connect = function (io) {
                     WIN[data.room.id] = '';
                     PLAYER2[data.room.id].isClicked = true;
                     PLAYER1[data.room.id].isClicked = false;
-                    io.in(data.room.name).emit('initBoard', { board: BOARD[data.room.id], player2: PLAYER2[data.room.id] });
+                    CLOCK[data.room.id] = 30;
+                    io.in(data.room.name).emit('initBoard', { board: BOARD[data.room.id], player2: PLAYER2[data.room.id], clock: CLOCK[data.room.id] });
                 }
             }
         }) 

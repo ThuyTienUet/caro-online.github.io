@@ -14,12 +14,15 @@
                     <a href="/#!/login">Login&nbsp;<span class="glyphicon glyphicon-log-in"></span></a>
                 </li>
                 <li ng-show="isLoggedIn" class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">{{name}}
+                    <a href="" style="font-family: 'Lobster', cursive; font-size: 25px;" class="dropdown-toggle" data-toggle="dropdown">{{name}}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="" ng-click="logout()">Log out&nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
+                            <a href="/#!/admin" ng-show="isAdmin">Account <span class="glyphicon glyphicon-user"></span></a>
+                        </li>
+                        <li>
+                            <a href="" ng-click="logout()">Log out&nbsp; <span class="glyphicon glyphicon-log-out"></span></a>
                         </li>
                     </ul>
                 </li>

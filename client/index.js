@@ -22,6 +22,10 @@ angular
                 templateUrl: 'src/register/register.html',
                 controller: 'registerCtrl'
             })
+            .when('/admin', {
+                templateUrl: 'src/administration/administration.html',
+                controller: 'adminCtrl'
+            })
             .otherwise({ redirectTo: '/' });
     }])
 

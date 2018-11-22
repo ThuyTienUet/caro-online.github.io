@@ -29,8 +29,6 @@ module.exports.createRoom = (req, res) => {
             Room.create({
                 name: req.body.name
             }).then((room) => {  
-                console.log(room.dataValues.name);
-                
                 socket_io.io.emit('roomNew', room.dataValues);
                 socket_io.socket.join(room.dataValues.name);
                 res.send({ code: 200, content: "SUCCESSFULLY", room: { id: room.dataValues.id, name: room.dataValues.name, numUser: 1 } })

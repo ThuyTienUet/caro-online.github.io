@@ -16,7 +16,11 @@
             </div>
 
             <div class="notification animated zoomInUp" ng-show="win">
-                <div class="noti-text animated flash">{{playerWin}} win! Congratulation.</div>
+                <div class="noti-text animated flash">You win! Congratulation. <i class="fab fa-angellist"></i></div>
+            </div>
+
+            <div class="notification animated zoomInUp" ng-show="lose">
+                <div class="noti-text animated flash">You lose. <i class="far fa-frown"></i></div>
             </div>
         </div>
         <div class="col-md-4">
@@ -36,11 +40,11 @@
                     <i class="far fa-circle"></i>&nbsp;{{ player2.username }}
                 </div>
             </div>
-            <!-- <div class="timer-box">
+            <div class="timer-box">
                 <strong>Time:
                     <p id="time"></p>
                 </strong>
-            </div> -->
+            </div>
             <div class="chat-box">
                 <div class="panel with-nav-tabs panel-primary">
                     <div class="panel-heading">

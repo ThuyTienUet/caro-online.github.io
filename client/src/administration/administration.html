@@ -1,0 +1,37 @@
+<navigation></navigation>
+<div class="content">
+    <div class="container">
+        <div class="divTable">
+            <div class="col-sm-12 no-padding divHeading">
+                <div class="Cell col-sm-1">
+                    STT
+                </div>
+                <div class="Cell col-sm-5">
+                    Username
+                </div>
+                <div class="Cell col-sm-3">
+                    Point
+                </div>
+                <div class="Cell col-sm-3">
+                    Action
+                </div>
+            </div>
+            <div class="col-sm-12 no-padding Row" ng-repeat="x in users | filter: searchText" ng-init="x.show=false">
+                <div class="Cell col-sm-1">
+                    {{ $index + 1 }}
+                </div>
+                <div class="Cell col-sm-5">
+                    {{ x.username }}
+                </div>
+                <div class="Cell col-sm-3">
+                    {{ x.point }}
+                </div>
+                <div class="Cell col-sm-3">
+                    <button class="btn btn-danger" ng-click="deleteUser(x.id)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
